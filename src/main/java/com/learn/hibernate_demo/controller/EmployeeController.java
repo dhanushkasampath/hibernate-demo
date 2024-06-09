@@ -50,14 +50,14 @@ public class EmployeeController {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        //here employee object will be in new state hence its not in sesion / first level cache.
+        //here employee object will be in new state hence its not in session / first level cache.
         Boolean doesExist = session.contains(employee);
-        System.out.println(employee.getFirstName() + employee.getLastName() + "exists status : " + doesExist);
+        System.out.println(employee.getFirstName() + " " + employee.getLastName() + " exists status : " + doesExist);
 
         //here employee object will be in managed state as u can see query is fired.
         Employee employee2 = session.get(Employee.class, Long.parseLong("2"));
         Boolean doesExistEmp2 = session.contains(employee2);
-        System.out.println(employee2.getFirstName() + employee2.getLastName() + "exists status : " + doesExistEmp2);
+        System.out.println(employee2.getFirstName() + " " + employee2.getLastName() + " exists status : " + doesExistEmp2);
         //after this its proved that employee object will be in managed state in the session.
 
         //Query is not fired as sssion now has this object with id 2
