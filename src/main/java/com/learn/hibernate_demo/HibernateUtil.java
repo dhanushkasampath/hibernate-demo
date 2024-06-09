@@ -18,30 +18,28 @@ import com.learn.hibernate_demo.entity.Employee;
 public class HibernateUtil {
 
     @Value("${spring.datasource.driver-class-name}")
-    private  String DRIVER;
+    private String DRIVER;
 
     @Value("${spring.datasource.password}")
-    private  String PASSWORD;
+    private String PASSWORD;
 
     @Value("${spring.datasource.url}")
-    private  String URL;
+    private String URL;
 
     @Value("${spring.datasource.username}")
-    private  String USERNAME;
+    private String USERNAME;
 
     @Value("${spring.jpa.properties.hibernate.dialect}")
-    private  String DIALECT;
+    private String DIALECT;
 
     @Value("${spring.jpa.show-sql}")
-    private  String SHOW_SQL;
+    private String SHOW_SQL;
 
     @Value("${spring.jpa.hibernate.ddl-auto}")
-    private  String HBM2DDL_AUTO;
+    private String HBM2DDL_AUTO;
 
     @Value("${entitymanager.packagesToScan}")
     private  String PACKAGES_TO_SCAN;
-
-
 
     private static SessionFactory sessionFactory;
 
@@ -51,6 +49,7 @@ public class HibernateUtil {
 
     @PostConstruct
     public  void setSessionFactory() {
+        System.out.println("setting configurations");
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration();
