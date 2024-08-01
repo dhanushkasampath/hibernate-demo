@@ -25,18 +25,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Employee employee = session.get(Employee.class, new Long(2));
+        Employee employee = session.get(Employee.class, Long.parseLong("2"));
         System.out.println(employee.getFirstName() + employee.getLastName());
 
         List<Employee> employeeList = repository.findAll();
 
-        Employee employee1 = (Employee)session.get(Employee.class, new Long(2));
+        Employee employee1 = session.get(Employee.class, Long.parseLong("2"));
         System.out.println(employee1.getFirstName() + employee1.getLastName());
 
         if(employeeList.size() > 0) {
             return employeeList;
         } else {
-            return new ArrayList<Employee>();
+            return new ArrayList<>();
         }
     }
 
